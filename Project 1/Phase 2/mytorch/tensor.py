@@ -1,11 +1,11 @@
-"this code is taken from https://github.com/amirrezarajabi/rs-dl-framework/blob/main/rsdl/tensors.py"
+"this code is inspired by https://github.com/amirrezarajabi/rs-dl-framework/blob/main/rsdl/tensors.py"
+
 import numpy as np
 from typing import List, NamedTuple, Callable, Optional, Union
 
 class Dependency(NamedTuple):
     tensor: 'Tensor'
     grad_fn: Callable[[np.ndarray], np.ndarray]
-
 
 Arrayable = Union[float, list, np.ndarray]
 
@@ -25,18 +25,18 @@ def ensure_tensor(tensorable: Tensorable) -> 'Tensor':
         
 class Tensor:
 
+    """
+    Args:
+        data: value of tensor (numpy.ndarray)
+        requires_grad: if tensor needs grad (bool)
+        depends_on: list of dependencies
+    """
     def __init__(
             self,
             data : np.ndarray,
             requires_grad: bool = False,
             depends_on : List[Dependency] = None) -> None:
-        
-        """
-        Args:
-            data: value of tensor (numpy.ndarray)
-            requires_grad: if tensor needs grad (bool)
-            depends_on: list of dependencies
-        """
+
         self._data = ensure_array(data)
         self.requires_grad = requires_grad
         self.depends_on = depends_on
@@ -66,95 +66,56 @@ class Tensor:
         return f"Tensor({self.data}, requires_grad={self.requires_grad})"
     
     def sum(self) -> 'Tensor':
-        # TODO: implement sum over tensor elems
-        # Hint use _tensor_sum function
-        return None
+        return _tensor_sum(self)
     
-    def log(self) -> 'Tensor':
-        # TODO: implement log
-        # Hint use _tensor_log function
-        return None
+    def log(self, base=10) -> 'Tensor':
+        return _tensor_log(self, base)
     
     def exp(self) -> 'Tensor':
-        # TODO: implement exp
-        # Hint use _tensor_exp function
-        return None
+        return _tensor_exp(self)
 
     def __add__(self, other) -> 'Tensor':
-        # Done ( Don't change )
-        # Hint use _add function
-        # self + other
         return _add(self, ensure_tensor(other))
     
     def __radd__(self, other) -> 'Tensor':
-        # TODO: implement radd
-        # Hint use _add function
-        # other + self
-        return None
+        return _add(ensure_tensor(other), self)
     
     def __iadd__(self, other) -> 'Tensor':
-        # TODO: implement inc add
-        # Hint use _add function
-        # self += other
-        return None
+        self = _add(self, ensure_tensor(other))
+        return self
     
     def __sub__(self, other) -> 'Tensor':
-        # TODO: implement sub
-        # Hint use _sub function
-        # self - other
-        return None
+        return _sub(self, ensure_tensor(other))
     
     def __rsub__(self, other) -> 'Tensor':
-        # TODO: implement rsub
-        # Hint use _sub function
-        # other - self
-        return None
+        return _sub(ensure_tensor(other), self)
     
     def __isub__(self, other) -> 'Tensor':
-        # TODO: implement inc sub
-        # Hint use _sub function
-        # self -= other
-        return None
+        self = _sub(self, ensure_tensor(other))
+        return self
     
     def __mul__(self, other) -> 'Tensor':
-        # TODO: implement elemnet-wise mul
-        # Hint use _mul function
-        # self * other
-        return None
+        return _mul(self, ensure_tensor(other))
     
     def __rmul__(self, other) -> 'Tensor':
-        # TODO: implement elemnet-wise rmul
-        # Hint use _mul function
-        # other * self
-        return None
+        return _mul(ensure_tensor(other), self)
     
     def __imul__(self, other) -> 'Tensor':
-        # TODO: implement elemnet-wise inc mul
-        # Hint use _mul function
-        # self *= other
-        return None
+        self = _mul(self, ensure_tensor(other))
+        return self
 
     def __matmul__(self, other) -> 'Tensor':
-        # TODO: implement matrix mul
-        # Hint use _matmul function
-        # self @ other
-        return None
+        return _mul(self, ensure_tensor(other))
     
-    def __pow__(self, power: float):
-        # TODO: implement power
-        # Hint use _tensor_pow function
-        # self ** power
-        return None
+    def __pow__(self, power: float) -> 'Tensor':
+        return _tensor_pow(self, power)
     
-    def __getitem__(self, idcs):
-        # TODO: implement getitem [:]
-        # Hint use _tensor_slice function
-        return None
+    def __getitem__(self, idcs) -> 'Tensor':
+        # idcs indicates [:], used to get slice of items
+        return  _tensor_slice(self, idcs)
     
-    def __neg__(self, idcs):
-        # TODO: implement neg (-)
-        # Hint use -_tensor_neg function
-        return None
+    def __neg__(self) -> 'Tensor':
+        return _tensor_neg(self)
         
     def backward(self, grad: 'Tensor' = None) -> None:
         if grad is None:
@@ -168,6 +129,7 @@ class Tensor:
             dependency.tensor.backward(Tensor(backward_grad))
 
 
+"TODO: handle tensor calculations through this methods"
 def _tensor_sum(t: Tensor) -> Tensor:
     data = t.data.sum()
     req_grad = t.requires_grad
