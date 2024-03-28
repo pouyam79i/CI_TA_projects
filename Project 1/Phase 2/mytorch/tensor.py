@@ -129,7 +129,12 @@ class Tensor:
             dependency.tensor.backward(Tensor(backward_grad))
 
 
-"TODO: handle tensor calculations through this methods"
+"""
+TODO: handle tensor calculations through this methods.
+hint: do not change t.data but create a new Tensor if required. 
+grad_fn handles required gradient calculation for current operation.
+you can check _tensor_sum(), _add() and _mul() as reference.
+"""
 def _tensor_sum(t: Tensor) -> Tensor:
     data = t.data.sum()
     req_grad = t.requires_grad

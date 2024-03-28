@@ -9,4 +9,7 @@ class Layer:
         return self.forward(args[0])
 
     def forward(self, x: Tensor) -> Tensor:
-        pass
+        return None
+    
+    def __str__(self) -> str:
+        return "Layer class is an abstract for other type of layers"
