@@ -11,16 +11,11 @@ class MaxPool2d(Layer):
         self.kernel_size = kernel_size
         self.stride = stride
         self.padding = padding
-        self.params = ...
         pass
 
     def forward(self, x: Tensor) -> Tensor:
         "TODO: implement forward pass"
         return ...
-    
-    def initialize(self): 
-        "TODO: initialize weights and bias"
-        pass
 
     def __str__(self) -> str:
         return "max pool 2d"
