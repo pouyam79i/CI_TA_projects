@@ -1,2 +1,2 @@
 # CI_projects
-calculational intelligence projects - 2024 Spring - AUT
+computational intelligence projects - 2024 Spring - AUT
