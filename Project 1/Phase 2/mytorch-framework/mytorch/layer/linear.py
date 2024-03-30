@@ -30,4 +30,4 @@ class Linear(Layer):
         return ...
     
     def __str__(self) -> str:
-        return "linear"
+        return "linear - total param: {} - in: {}, out: {}".format(self.inputs * self.outputs, self.inputs, self. outputs)
