@@ -7,8 +7,8 @@ class Model:
     def __init__(self) -> None:
         pass
 
-    def __call__(self, *args: Any, **kwds: Any) -> Any:
-        return self.forward(args[0])
+    def __call__(self, inp: Tensor) -> Tensor:
+        return self.forward(inp)
 
     "Override this method when defining your own model."
     def forward(self, x: Tensor) -> Tensor:
