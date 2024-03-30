@@ -1,7 +1,7 @@
 import numpy as np
 from mytorch import Tensor, Dependency
 
-
+"Do not change this code"
 def step(x: Tensor) -> Tensor:
 
     data = np.where(x.data < 0, np.zeros_like(x.data), np.ones_like(x.data))
@@ -17,7 +17,3 @@ def step(x: Tensor) -> Tensor:
 
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
 
-print(step(Tensor(np.array([[-1, -2, 3],
-                            [4, 5, -6],
-                            [7, 8, 9]]),
-                  requires_grad=True)))
