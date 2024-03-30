@@ -30,18 +30,18 @@ def ensure_tensor(tensorable: Tensorable) -> 'Tensor':
 
 
 class Tensor:
-    """
-    Args:
-        data: value of tensor (numpy.ndarray)
-        requires_grad: if tensor needs grad (bool)
-        depends_on: list of dependencies
-    """
 
     def __init__(
             self,
             data: np.ndarray,
             requires_grad: bool = False,
             depends_on: List[Dependency] = None) -> None:
+        """
+        Args:
+            data: value of tensor (numpy.ndarray)
+            requires_grad: if tensor needs grad (bool)
+            depends_on: list of dependencies
+        """
 
         self._data = ensure_array(data)
         self.requires_grad = requires_grad
@@ -136,7 +136,7 @@ class Tensor:
 
 
 """
-TODO: handle tensor calculations through this methods.
+TODO: handle tensor calculations through these methods.
 hint: do not change t.data but create a new Tensor if required. 
 grad_fn handles required gradient calculation for current operation.
 you can check _tensor_sum(), _add() and _mul() as reference.
