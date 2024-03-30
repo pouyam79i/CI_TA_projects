@@ -1,9 +1,6 @@
-from rsdl.optim import Optimizer
-from rsdl import Tensor
-import numpy as np
+from mytorch.optimizer import Optimizer
 
-
-# TODO: implement Momentum optimizer
+"TODO: (optional) implement Momentum optimizer"
 class Momentum(Optimizer):
     def __init__(self):
         pass

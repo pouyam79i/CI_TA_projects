@@ -1,8 +1,6 @@
-from rsdl.optim import Optimizer
-from rsdl import Tensor
-import numpy as np
+from mytorch.optimizer import Optimizer
 
-
+"TODO: (optional) implement RMSprop optimizer"
 class RMSprop(Optimizer):
     def __init__(self):
         pass
