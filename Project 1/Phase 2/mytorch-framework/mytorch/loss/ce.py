@@ -1,6 +1,5 @@
 from mytorch import Tensor
 
-
 def CategoricalCrossEntropy(preds: Tensor, label: Tensor):
-    # TODO: implement Categorical Cross Entropy loss
-    return None
+    "TODO: implement Categorical Cross Entropy loss"
+    return ...
