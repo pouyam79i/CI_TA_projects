@@ -18,4 +18,4 @@ class AvgPool2d(Layer):
         return ...
     
     def __str__(self) -> str:
-        return "avg pool 2d"
+        return "avg pool 2d - kernel: {}, stride: {}, padding: {}".format(self.kernel_size, self.stride, self.padding)
