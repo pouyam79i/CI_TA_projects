@@ -12,16 +12,9 @@ class Model:
 
     "Override this method when defining your own model."
     def forward(self, x: Tensor) -> Tensor:
+        print("forward method not implemented.")
         return None
 
-    def train(self):
-        "TODO: (optional) prepare model for training."
-        pass
-    
-    def eval(self):
-        "TODO: (optional) prepare model for evaluation."
-        pass
-    
     def parameters(self) -> List[Layer]:
         params = []
         for _, attribValue in self.__dict__.items():
