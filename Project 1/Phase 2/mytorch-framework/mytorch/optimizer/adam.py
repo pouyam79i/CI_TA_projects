@@ -1,5 +1,7 @@
 from mytorch.optimizer import Optimizer
 
+
+# TODO: implement Adam Optimizer
 class Adam(Optimizer):
     def __init__(self):
         pass
@@ -7,5 +9,3 @@ class Adam(Optimizer):
     def step(self):
         pass
 
-    def zero_grad(self):
-        pass
