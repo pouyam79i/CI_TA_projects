@@ -8,9 +8,8 @@ class Linear(Layer):
         self.inputs = inputs
         self.outputs = outputs
         self.need_bias = need_bias
-
-        "TODO: build your linear network using initialize method"
-        self.params = []
+        self.weight = []
+        self.bias = []
         self.initialize()
 
     def forward(self, x: Tensor) -> Tensor:
