@@ -31,3 +31,4 @@ class Linear(Layer):
     
     def __str__(self) -> str:
         return "linear - total param: {} - in: {}, out: {}".format(self.inputs * self.outputs, self.inputs, self. outputs)
+ 
