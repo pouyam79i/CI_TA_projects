@@ -87,7 +87,10 @@ class Tensor:
         return _add(ensure_tensor(other), self)
 
     def __iadd__(self, other) -> 'Tensor':
-        self = _add(self, ensure_tensor(other))
+        res_tensor = _add(self, ensure_tensor(other))
+        self._data = res_tensor._data
+        self.requires_grad = res_tensor.requires_grad
+        self.depends_on = res_tensor.depends_on
         return self
 
     def __sub__(self, other) -> 'Tensor':
@@ -97,7 +100,10 @@ class Tensor:
         return _sub(ensure_tensor(other), self)
 
     def __isub__(self, other) -> 'Tensor':
-        self = _sub(self, ensure_tensor(other))
+        res_tensor = _sub(self, ensure_tensor(other))
+        self._data = res_tensor._data
+        self.requires_grad = res_tensor.requires_grad
+        self.depends_on = res_tensor.depends_on
         return self
 
     def __mul__(self, other) -> 'Tensor':
@@ -107,7 +113,10 @@ class Tensor:
         return _mul(ensure_tensor(other), self)
 
     def __imul__(self, other) -> 'Tensor':
-        self = _mul(self, ensure_tensor(other))
+        res_tensor = _mul(self, ensure_tensor(other))
+        self._data = res_tensor._data
+        self.requires_grad = res_tensor.requires_grad
+        self.depends_on = res_tensor.depends_on
         return self
 
     def __matmul__(self, other) -> 'Tensor':
