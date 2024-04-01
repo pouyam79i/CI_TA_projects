@@ -111,7 +111,7 @@ class Tensor:
         return self
 
     def __matmul__(self, other) -> 'Tensor':
-        return _mul(self, ensure_tensor(other))
+        return _matmul(self, ensure_tensor(other))
 
     def __pow__(self, power: float) -> 'Tensor':
         return _tensor_pow(self, power)
