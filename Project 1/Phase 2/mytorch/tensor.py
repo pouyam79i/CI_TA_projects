@@ -63,6 +63,7 @@ class Tensor:
     @data.setter
     def data(self, new_data: np.ndarray) -> None:
         self._data = new_data
+        self.shape = new_data.shape
         self.grad = None
 
     def zero_grad(self) -> None:
