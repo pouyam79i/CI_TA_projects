@@ -1,6 +1,6 @@
 from typing import Any, List
 from mytorch import Tensor
-from mytorch.layer import Layer
+from mytorch.layer import Layer, Conv2d, Linear
 
 "This class is an abstraction for your model."
 class Model:
@@ -18,7 +18,7 @@ class Model:
     def parameters(self) -> List[Layer]:
         params = []
         for _, attribValue in self.__dict__.items():
-            if isinstance(attribValue, Layer):
+            if isinstance(attribValue, (Conv2d, Linear)):
                 params.append(attribValue)
         return params
 

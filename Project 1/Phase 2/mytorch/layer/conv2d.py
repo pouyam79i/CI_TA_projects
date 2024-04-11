@@ -1,26 +1,28 @@
 from mytorch import Tensor
 from mytorch.layer import Layer
+from typing import List
 
 import numpy as np
 
 class Conv2d(Layer):
-    def __init__(self, in_channels, out_channels, kernel_size=(1, 1), stride=(1, 1), padding=(1, 1), need_bias: bool = False) -> None:
+    def __init__(self, in_channels, out_channels, kernel_size=(1, 1), stride=(1, 1), padding=(1, 1), need_bias: bool = False, mode="xavier") -> None:
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.kernel_size = kernel_size
         self.stride = stride
         self.padding = padding
         self.need_bias = need_bias
-        
-        "TODO: build your kernel using initialize method"
-        self.kernel = ...
+        self.weight: List[Tensor] = None
+        self.bias: List[Tensor] = None
+        self.initialize_mode = mode
+
         self.initialize()
 
     def forward(self, x: Tensor) -> Tensor:
         "TODO: implement forward pass"
         return ...
     
-    def initialize(self): 
+    def initialize(self):
         "TODO: initialize weights"
         pass
 

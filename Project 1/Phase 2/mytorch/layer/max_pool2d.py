@@ -11,7 +11,6 @@ class MaxPool2d(Layer):
         self.kernel_size = kernel_size
         self.stride = stride
         self.padding = padding
-        pass
 
     def forward(self, x: Tensor) -> Tensor:
         "TODO: implement forward pass"
