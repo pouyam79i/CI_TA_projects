@@ -3,14 +3,11 @@
 import numpy as np
 from typing import List, NamedTuple, Callable, Optional, Union
 
-
 class Dependency(NamedTuple):
     tensor: 'Tensor'
     grad_fn: Callable[[np.ndarray], np.ndarray]
 
-
 Arrayable = Union[float, list, np.ndarray]
-
 
 def ensure_array(arrayable: Arrayable) -> np.ndarray:
     if isinstance(arrayable, np.ndarray):
@@ -18,16 +15,13 @@ def ensure_array(arrayable: Arrayable) -> np.ndarray:
     else:
         return np.array(arrayable)
 
-
 Tensorable = Union[float, 'Tensor', np.ndarray]
-
 
 def ensure_tensor(tensorable: Tensorable) -> 'Tensor':
     if isinstance(tensorable, Tensor):
         return tensorable
     else:
         return Tensor(tensorable)
-
 
 class Tensor:
 
@@ -144,14 +138,12 @@ class Tensor:
             backward_grad = dependency.grad_fn(grad.data)
             dependency.tensor.backward(Tensor(backward_grad))
 
-
 """
 TODO: handle tensor calculations through these methods.
 hint: do not change t.data but create a new Tensor if required. 
 grad_fn handles required gradient calculation for current operation.
 you can check _tensor_sum(), _add() and _mul() as reference.
 """
-
 
 def _tensor_sum(t: Tensor) -> Tensor:
     data = t.data.sum()
@@ -167,7 +159,6 @@ def _tensor_sum(t: Tensor) -> Tensor:
         depends_on = []
 
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
-
 
 def _tensor_log(t: Tensor) -> Tensor:
     # TODO
@@ -185,7 +176,6 @@ def _tensor_log(t: Tensor) -> Tensor:
 
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
 
-
 def _tensor_exp(t: Tensor) -> Tensor:
     # TODO
     data = ...
@@ -202,7 +192,6 @@ def _tensor_exp(t: Tensor) -> Tensor:
 
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
 
-
 def _tensor_pow(t: Tensor, power: float) -> Tensor:
     # TODO
     data = ...
@@ -218,7 +207,6 @@ def _tensor_pow(t: Tensor, power: float) -> Tensor:
         depends_on = []
 
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
-
 
 def _tensor_slice(t: Tensor, idcs) -> Tensor:
     # TODO
@@ -237,7 +225,6 @@ def _tensor_slice(t: Tensor, idcs) -> Tensor:
 
     return Tensor(data, requires_grad, depends_on)
 
-
 def _tensor_neg(t: Tensor) -> Tensor:
     # TODO
     data = ...
@@ -248,7 +235,6 @@ def _tensor_neg(t: Tensor) -> Tensor:
         depends_on = []
 
     return Tensor(data, requires_grad, depends_on)
-
 
 def _add(t1: Tensor, t2: Tensor) -> Tensor:
     data = t1.data + t2.data
@@ -291,7 +277,6 @@ def _sub(t1: Tensor, t2: Tensor) -> Tensor:
     # Hint: a-b = a+(-b)
     return None
 
-
 def _mul(t1: Tensor, t2: Tensor) -> Tensor:
     # Done ( Don't change )
     data = t1.data * t2.data
@@ -328,7 +313,6 @@ def _mul(t1: Tensor, t2: Tensor) -> Tensor:
         requires_grad=req_grad,
         depends_on=depends_on
     )
-
 
 def _matmul(t1: Tensor, t2: Tensor) -> Tensor:
     # TODO: implement matrix multiplication

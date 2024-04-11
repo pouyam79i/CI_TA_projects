@@ -1,27 +1,23 @@
 import numpy as np
 
-
-# TODO: implement xavier_initializer, he_initializer, random_normal_initializer, zero_initializer
-
 def xavier_initializer(shape):
-    pass
-
+    "TODO: implement xavier_initializer" 
+    return ...
 
 def he_initializer(shape):
-    pass
-
+    "TODO: implement he_initializer" 
+    return ...
 
 def random_normal_initializer(shape, mean=0.0, stddev=0.05):
-    pass
-
+    "TODO: implement random_normal_initializer" 
+    return ...
 
 def zero_initializer(shape):
-    pass
-
+    "TODO: implement zero_initializer" 
+    return ...
 
 def one_initializer(shape):
     return np.ones(shape, dtype=np.float64)
-
 
 def initializer(shape, mode="xavier"):
     if mode == "xavier":
