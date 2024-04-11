@@ -1,6 +1,5 @@
 from mytorch import Tensor
 from mytorch.layer import Layer
-from typing import List
 
 import numpy as np
 
@@ -12,8 +11,8 @@ class Conv2d(Layer):
         self.stride = stride
         self.padding = padding
         self.need_bias = need_bias
-        self.weight: List[Tensor] = None
-        self.bias: List[Tensor] = None
+        self.weight: Tensor = None
+        self.bias: Tensor = None
         self.initialize_mode = mode
 
         self.initialize()

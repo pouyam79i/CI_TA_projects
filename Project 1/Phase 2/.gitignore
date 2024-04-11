@@ -267,4 +267,4 @@ pyrightconfig.json
 MNIST/
 
 # ignore test files
-test.py
+test/
