@@ -18,7 +18,7 @@ class Model:
     def parameters(self) -> List[Layer]:
         params = []
         for _, attribValue in self.__dict__.items():
-            if issubclass(attribValue, Layer):
+            if isinstance(attribValue, Layer):
                 params.append(attribValue)
         return params
 

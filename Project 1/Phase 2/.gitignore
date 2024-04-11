@@ -265,3 +265,6 @@ pyrightconfig.json
 
 # ignore raw data
 MNIST/
+
+# ignore test files
+test.py
