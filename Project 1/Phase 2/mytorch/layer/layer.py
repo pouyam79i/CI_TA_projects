@@ -13,7 +13,7 @@ class Layer:
     def forward(self, x: Tensor) -> Tensor:
         return None
     
-    def initialize(self, mode="random"):
+    def initialize(self, mode="random_normal"):
         pass
 
     def zero_grad(self):
