@@ -24,5 +24,5 @@ class Model:
 
     def summary(self):
         for attribName, attribValue in self.__dict__.items():
-            if issubclass(attribValue, Layer):
+            if isinstance(attribValue, Layer):
                 print(attribName + ': ', attribValue)
