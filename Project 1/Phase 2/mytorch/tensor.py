@@ -123,6 +123,10 @@ class Tensor:
     def __getitem__(self, idcs) -> 'Tensor':
         # idcs indicates [:], used to get slice of items
         return _tensor_slice(self, idcs)
+    
+    def __setitem__(self, idcs, other):
+        "TODO: handle tensor item assignment."
+        pass
 
     def __neg__(self) -> 'Tensor':
         return _tensor_neg(self)
@@ -161,7 +165,7 @@ def _tensor_sum(t: Tensor) -> Tensor:
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
 
 def _tensor_log(t: Tensor) -> Tensor:
-    # TODO
+    "TODO: tensor log"
     data = ...
     req_grad = ...
 
@@ -177,7 +181,7 @@ def _tensor_log(t: Tensor) -> Tensor:
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
 
 def _tensor_exp(t: Tensor) -> Tensor:
-    # TODO
+    "TODO: tensor exp"
     data = ...
     req_grad = ...
 
@@ -193,7 +197,7 @@ def _tensor_exp(t: Tensor) -> Tensor:
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
 
 def _tensor_pow(t: Tensor, power: float) -> Tensor:
-    # TODO
+    "TODO: tensor power"
     data = ...
     req_grad = ...
 
@@ -209,7 +213,7 @@ def _tensor_pow(t: Tensor, power: float) -> Tensor:
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
 
 def _tensor_slice(t: Tensor, idcs) -> Tensor:
-    # TODO
+    "TODO: tensor slice"
     data = ...
     requires_grad = ...
 
@@ -226,7 +230,7 @@ def _tensor_slice(t: Tensor, idcs) -> Tensor:
     return Tensor(data, requires_grad, depends_on)
 
 def _tensor_neg(t: Tensor) -> Tensor:
-    # TODO
+    "TODO: tensor negative"
     data = ...
     requires_grad = ...
     if requires_grad:
@@ -273,7 +277,7 @@ def _add(t1: Tensor, t2: Tensor) -> Tensor:
 
 
 def _sub(t1: Tensor, t2: Tensor) -> Tensor:
-    # TODO: implement sub
+    "TODO: implement sub"
     # Hint: a-b = a+(-b)
     return None
 
@@ -315,7 +319,7 @@ def _mul(t1: Tensor, t2: Tensor) -> Tensor:
     )
 
 def _matmul(t1: Tensor, t2: Tensor) -> Tensor:
-    # TODO: implement matrix multiplication
+    "TODO: implement matrix multiplication"
     data = t1.data @ t2.data
     requires_grad = t1.requires_grad or t2.requires_grad
 
