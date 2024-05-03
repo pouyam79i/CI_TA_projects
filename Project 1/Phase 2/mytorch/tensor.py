@@ -164,7 +164,7 @@ def _tensor_sum(t: Tensor) -> Tensor:
 
     return Tensor(data=data, requires_grad=req_grad, depends_on=depends_on)
 
-def _tensor_log(t: Tensor) -> Tensor:
+def _tensor_log(t: Tensor, base=10) -> Tensor:
     "TODO: tensor log"
     data = ...
     req_grad = ...
